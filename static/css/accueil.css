@@ -3,37 +3,49 @@
 .hero {
   width: 100%;
   height: 100vh;
-  background: #0a1628;
-  background:
+  background-color: #0a1628;
+  background-image:
     radial-gradient(
       ellipse at 70% 50%,
-      rgba(0, 82, 180, 0.35) 0%,
+      rgba(0, 82, 180, 0.6) 0%,
       transparent 60%
     ),
     radial-gradient(
       ellipse at 20% 80%,
-      rgba(200, 16, 46, 0.25) 0%,
+      rgba(200, 16, 46, 0.5) 0%,
       transparent 50%
     ),
-    linear-gradient(135deg, #0a1628 0%, #0d2244 50%, #091830 100%);
-    
+    linear-gradient(
+      135deg,
+      rgba(10, 22, 40, 0.85) 0%,
+      rgba(13, 34, 68, 0.75) 50%,
+      rgba(9, 24, 48, 0.9) 100%
+    ),
+    url("../images/bg-background.webp");
+  background-size: cover;
+  background-position:
+    center,
+    center,
+    center,
+    right center;
+  background-repeat: no-repeat;
+  background-blend-mode: screen, screen, multiply, normal;
 }
 
-
 .hero h1 {
-    font-family: "Raleway", sans-serif;
-    font-size: 7rem;
-    font-weight: 700;
-    color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-size: 7rem;
+  font-weight: 700;
+  color: #fff;
 }
 
 .hero h1 span {
-    color: #f3e300;
+  color: #f3e300;
 }
 
 .hero p {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #fff;
 }
