@@ -4,6 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -21,18 +23,19 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="{% static 'css/register.css' %}" />
-    <title>Inscription</title>
+    <title>Connexion</title>
   </head>
   <body>
+    
     <section class="w-100 h-100 overflow-hidden register">
       <div class="container">
         <div class="d-flex align-items-center justify-content-center vh-100">
           <div class="card w-50 bg-dark shadow-sm">
             <div class="card-body">
               <div class="text-center text-white">
-                <h2 class="fw-bold">Inscription</h2>
+                <h2 class="fw-bold">Connexion</h2>
                 <p class="text-white fw-medium">
-                  Créez votre compte pour commencer
+                  Connectez-vous pour continuer
                 </p>
               </div>
               <form action="" method="post">
@@ -46,27 +49,32 @@
                   </div>
                   {% endif %} {% for field in form %}
                   <div class="w-100">
-                    <label
-                      class="form-label text-white"
-                    >
+                    <label class="form-label text-white">
                       {{ field.label }}
                     </label>
-                    {{ field }} {% if field.errors %}
+                    <input
+                      type="{{ field.field.widget.input_type }}"
+                      class="form-control"
+                      name="{{ field.name }}"
+                      id="{{ field.id_for_label }}"
+                      placeholder="{{ field.label }}"
+                    />
+                    {% if field.errors %}
                     <div class="text-danger small mt-1 fw-bold">
                       {% for error in field.errors %} {{ error }}<br />
                       {% endfor %}
                     </div>
-                    {% endif %} 
+                    {% endif %}
                   </div>
                   {% endfor %}
                   <div>
                     <h3 class="text-white h6 pt-3">
-                      Vous avez déjà un compte ?
-                      <a href="{% url 'login' %}">Connectez-vous</a>
+                      Vous n'avez pas de compte ?
+                      <a href="{% url 'register' %}">Inscrivez-vous</a>
                     </h3>
                   </div>
                   <button class="w-100 btn btn-soft btn-primary" type="submit">
-                    S'inscrire
+                    Se connecter
                   </button>
                 </div>
               </form>
@@ -75,5 +83,6 @@
         </div>
       </div>
     </section>
+
   </body>
 </html>
