@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 
 
-class Categorie(models.Model):
+class Categories(models.Model):
     nom = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
 
@@ -15,7 +15,7 @@ class Articles(models.Model):
     contenu = models.TextField()
     image = models.ImageField(upload_to="articles/", blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
-    categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE)
+    categorie = models.ForeignKey(Categories, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titre
