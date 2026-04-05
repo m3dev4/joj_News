@@ -47,10 +47,30 @@
               <li><a href="#">Contact</a></li>
             </ul>
           </nav>
+          {% if user.is_authenticated %}
+          <div class="dropdown bg-light">
+            <div tabindex="0" role="button" class="btn m-1">
+              {{user.username}}
+            </div>
+            <ul
+              tabindex="-1"
+              class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+            >
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Déconnexion</button>
+              </form>
+            </ul>
+          </div>
+          {% else %}
           <div class="btn-connect">
             <a href="#" class="btn btn-primary">Connexion</a>
-            <a href="#" class="btn btn-secondary">Inscription</a>
+            <a href="{% url 'register' %}" class="btn btn-secondary"
+              >Inscription</a
+            >
           </div>
+
+          {% endif %}
         </div>
       </div>
     </header>
