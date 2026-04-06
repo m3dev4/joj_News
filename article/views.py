@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from article.models import Articles, Categorie
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -27,3 +28,7 @@ def list_articles(request):
     return render(
         request, "articles.html", {"articles": articles, "categories": categories}
     )
+
+def detail_article(request, id):
+   article = get_object_or_404(Articles, id=id)
+   return render(request, "detailArticle.html", {"article": article})
