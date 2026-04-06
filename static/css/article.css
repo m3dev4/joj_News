@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap");
+
+.articles-page {
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+    position: relative;
+    
+    
+}
+
+.section-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0a1628;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+/* Badges catégories */
+.category-badge {
+  font-family: "Oswald", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: #0a1628;
+  color: #ffd700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.category-badge:hover {
+  background: #ffd700;
+  color: #0a1628;
+}
+
+/* Cards */
+.article-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 0.5px solid #e2e6ea;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.article-card__img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.article-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-card__cat {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: "Oswald", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: #ffd700;
+  color: #0a1628;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.article-card__body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.article-card__title {
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0a1628;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.article-card__desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.article-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 0.5px solid #eee;
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.article-card__date {
+  font-size: 12px;
+  color: #999;
+}
+
+.btn-lire {
+  font-family: "Oswald", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: #0a1628;
+  color: #ffd700;
+  padding: 7px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-lire:hover {
+  opacity: 0.85;
+  color: #ffd700;
+}
+
+

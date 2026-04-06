@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+{% endblock %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/article.css' %}" />
+
+<section class="articles-page">
+   
+  <!-- Catégories -->
+  <div class="container py-5">
+    <h2 class="section-title">Catégories</h2>
+    <div class="d-flex gap-2 flex-wrap mb-5">
+      {% for categorie in categories %}
+      <span class="category-badge">{{ categorie.nom }}</span>
+      {% endfor %}
+    </div>
+
+    <!-- Articles -->
+    <h2 class="section-title">Tous les articles</h2>
+    <div class="row g-4">
+      {% for article in articles %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="article-card h-100">
+          <div class="article-card__img">
+            <img src="{{ article.image.url }}" alt="{{ article.titre }}" />
+            <span class="article-card__cat">{{ article.categorie.nom }}</span>
+          </div>
+          <div class="article-card__body">
+            <h3 class="article-card__title">{{ article.titre }}</h3>
+            <p class="article-card__desc">
+              {{ article.description|truncatewords:20 }}
+            </p>
+            <div class="article-card__footer">
+              <span class="article-card__date"
+                >{{ article.date_article|date:"d M Y" }}</span
+              >
+              <a href="#" class="btn-lire">Lire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

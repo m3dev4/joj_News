@@ -1,3 +1,4 @@
+from article.models import Articles, Categorie
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.contrib.auth import login
@@ -18,3 +19,11 @@ def register(request):
     else:
         form = CustomUserCreationForm()
     return render(request, "register.html", {"form": form})
+
+
+def list_articles(request):
+    articles = Articles.objects.all()
+    categories = Categorie.objects.all()
+    return render(
+        request, "articles.html", {"articles": articles, "categories": categories}
+    )
