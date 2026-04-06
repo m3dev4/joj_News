@@ -29,6 +29,7 @@ def list_articles(request):
         request, "articles.html", {"articles": articles, "categories": categories}
     )
 
+
 def detail_article(request, id):
-   article = get_object_or_404(Articles, id=id)
-   return render(request, "detailArticle.html", {"article": article})
+    article = get_object_or_404(Articles, id=id)
+    return render(request, "detailArticle.html", {"article": article})
