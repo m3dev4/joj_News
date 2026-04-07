@@ -1,7 +1,9 @@
+from django.shortcuts import get_object_or_404
+from article.models import Articles, Categories
 from django.shortcuts import redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.contrib.auth import login
+from .form import CustomUserCreationForm
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
@@ -15,22 +17,37 @@ def accueil(request):
 
 def register(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect("accueil")
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, "register.html", {"form": form})
 
-class ArticleListView(ListView):
+
+def list_articles(request):
+    articles = Articles.objects.all()
+    categories = Categories.objects.all()
+    return render(
+        request, "articles.html", {"articles": articles, "categories": categories}
+    )
+
+
+def detail_article(request, id):
+    article = get_object_or_404(Articles, id=id)
+    return render(request, "detailArticle.html", {"article": article})
+
+
+
+# class ArticleListView(ListView):
     model = Articles
     template_name = 'articles/liste.html'
     context_object_name = 'articles'
     ordering = ['-date']
 
-class ArticleDetailView(DetailView):
+# class ArticleDetailView(DetailView):
     model = Articles
     template_name = 'articles/detail.html'
     context_object_name = 'article'

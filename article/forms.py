@@ -12,3 +12,4 @@ class CommentaireForm(forms.ModelForm):
                 'placeholder': 'Écrivez votre commentaire...'
             })
         }
+        

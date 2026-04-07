@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+    <title>Connexion</title>
+  </head>
+  <body>
+    <section class="w-100 h-100 overflow-hidden register">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-center vh-100">
+          <div class="card w-50 bg-dark shadow-sm">
+            <div class="card-body">
+              <div class="text-center text-white">
+                <h2 class="fw-bold">Connexion</h2>
+                <p class="text-white fw-medium">
+                  Connectez-vous pour continuer
+                </p>
+              </div>
+              <form action="" method="post">
+                {% csrf_token %}
+                <div
+                  class="w-100 d-flex align-items-center justify-content-center gap-2 p-3 flex-column"
+                >
+                  {% if form.non_field_errors %}
+                  <div class="alert w-100 text-center mt-2 h-25 alert-danger">
+                    {{ form.non_field_errors }}
+                  </div>
+                  {% endif %} {% for field in form %}
+                  <div class="w-100">
+                    <label class="form-label text-white">
+                      {{ field.label }}
+                    </label>
+                    <input
+                      type="{{ field.field.widget.input_type }}"
+                      class="form-control"
+                      name="{{ field.name }}"
+                      id="{{ field.id_for_label }}"
+                      placeholder="{{ field.label }}"
+                    />
+                    {% if field.errors %}
+                    <div class="text-danger small mt-1 fw-bold">
+                      {% for error in field.errors %} {{ error }}<br />
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                  </div>
+                  {% endfor %}
+                  <div>
+                    <h3 class="text-white h6 pt-3">
+                      Vous n'avez pas de compte ?
+                      <a href="{% url 'register' %}">Inscrivez-vous</a>
+                    </h3>
+                  </div>
+                  <button class="w-100 btn btn-soft btn-primary" type="submit">
+                    Se connecter
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
