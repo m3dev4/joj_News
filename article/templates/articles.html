@@ -19,7 +19,11 @@
       <div class="col-12 col-md-6 col-lg-4">
         <div class="article-card h-100">
           <div class="article-card__img">
-            <img src="{{ article.image.url }}" alt="{{ article.titre }}" />
+            {% if article.image %}
+            <img src="{{article.image.url}}" alt="{{article.titre}}" />
+            {% else %}
+            <p>Aucune image disponible</p>
+            {% endif %}
             <span class="article-card__cat">{{ article.categorie.nom }}</span>
           </div>
           <div class="article-card__body">

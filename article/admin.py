@@ -12,7 +12,7 @@ class ArticleAdmin(admin.ModelAdmin):
 admin.site.register(Articles, ArticleAdmin)
 
 class CategorieAdmin(admin.ModelAdmin):
-    list_display = ("nom", "description")
+    list_display =  ["nom"]
     search_fields = ("nom",)
 admin.site.register(Categories, CategorieAdmin)
 

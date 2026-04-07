@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from article.models import Articles, Categorie
+from article.models import Articles, Categories
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.contrib.auth import login
@@ -26,7 +26,7 @@ def register(request):
 
 def list_articles(request):
     articles = Articles.objects.all()
-    categories = Categorie.objects.all()
+    categories = Categories.objects.all()
     return render(
         request, "articles.html", {"articles": articles, "categories": categories}
     )
