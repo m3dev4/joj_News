@@ -17,7 +17,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
+NAME = os.getenv("DBNAME")
+PASSWORD = os.getenv("DBPASSWORD")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,11 +84,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT'),
+        "NAME": NAME,
+        "USER": "root",
+        "PASSWORD": PASSWORD,
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
 
@@ -136,5 +137,5 @@ LOGIN_REDIRECT_URL = 'accueil'
 LOGOUT_REDIRECT_URL = 'accueil'
 LOGIN_URL = '/comptes/login/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

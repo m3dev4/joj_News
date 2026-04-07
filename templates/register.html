@@ -40,11 +40,7 @@
                 <div
                   class="w-100 d-flex align-items-center justify-content-center gap-2 p-3 flex-column"
                 >
-                  {% if form.non_field_errors %}
-                  <div class="alert w-100 text-center mt-2 h-25 alert-danger">
-                    {{ form.non_field_errors }}
-                  </div>
-                  {% endif %} {% for field in form %}
+                  {% for field in form %} 
                   <div class="w-100">
                     <label class="form-label text-white">
                       {{ field.label }}
