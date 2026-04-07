@@ -3,7 +3,9 @@ from article.models import Articles, Categorie
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.contrib.auth import login
-from .form import CustomUserCreationForm
+from .forms import CustomUserCreationForm
+from django.contrib.auth.decorators import login_required
+from .forms import CommentaireForm
 
 
 def accueil(request):
@@ -33,3 +35,16 @@ def list_articles(request):
 def detail_article(request, id):
     article = get_object_or_404(Articles, id=id)
     return render(request, "detailArticle.html", {"article": article})
+
+
+@login_required
+def ajout_commentaire(request, pk):
+    article = get_object_or_404(Articles, pk=pk)
+    if request.method == 'POST':
+        form = CommentaireForm(request.POST)
+        if form.is_valid():
+            commentaire = form.save(commit=False)
+            commentaire.article = article
+            commentaire.auteur = request.user
+            commentaire.save()
+    return redirect('article-detail', pk=pk)
