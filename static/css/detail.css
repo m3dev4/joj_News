@@ -37,3 +37,13 @@
     height: 286px;
     background-color: rgb(197, 177, 0);
 }
+
+.content-comment {
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.text {
+    font-size: 14px;
+}

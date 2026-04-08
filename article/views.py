@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from article.models import Articles, Categories
+from article.models import Articles, Categories, Commentaires
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.contrib.auth import login
@@ -34,7 +34,9 @@ def list_articles(request):
 
 def detail_article(request, id):
     article = get_object_or_404(Articles, id=id)
-    return render(request, "detailArticle.html", {"article": article})
+    form = CommentaireForm()
+    commentaires = Commentaires.objects.filter(article=article).order_by('-date')
+    return render(request, "detailArticle.html", {"article": article, "form": form, "commentaires": commentaires})
 
 
 @login_required
@@ -47,4 +49,8 @@ def ajout_commentaire(request, pk):
             commentaire.article = article
             commentaire.auteur = request.user
             commentaire.save()
-    return redirect('article-detail', pk=pk)
+    return redirect('detailArticle', id=pk)
+
+
+
+
