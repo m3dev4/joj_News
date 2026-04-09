@@ -1,0 +1,9 @@
+.register{
+    background-image: url('/static/images/bg-background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+ 
