@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from article.models import Articles, Categories, Commentaires
 from django.shortcuts import redirect
@@ -6,6 +7,9 @@ from django.contrib.auth import login
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import CommentaireForm
+from django.views.generic.edit import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 def accueil(request):
@@ -52,5 +56,19 @@ def ajout_commentaire(request, pk):
     return redirect('detailArticle', id=pk)
 
 
+@login_required
+def supprimer_commentaire(request, pk):
+    commentaire = get_object_or_404(Commentaires, pk=pk)
+    if request.user == commentaire.auteur:
+        commentaire.delete()
+    return redirect('detailArticle', id=commentaire.article.pk)
+
+class UpdateCommentaire(LoginRequiredMixin, UpdateView):
+    model = Commentaires
+    fields = ["contenu"]
+    success_url = "detailArticle.html"
+
+    def get_success_url(self):
+        return reverse_lazy("detailArticle", kwargs={"id": self.object.article.pk})
 
 

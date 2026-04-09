@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {%block title%}{{article.titre}}{%endblock%} {% block content %}
 <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
-<section id="my_modal_3" class="w-100 h-100 overflow-hidden">
+<section class="w-100 h-100">
   <div class="head">
     <div class="container-fluid">
       <div class="d-flex justify-content-end illust">
@@ -106,7 +106,7 @@
                     {% if commentaire.auteur == request.user %}
                     <div class="d-flex gap-2">
                       <button class="btn btn-primary text">
-                        <i class="fa-solid fa-pen-to-square"></i>Modifier
+                        <i class="fa-solid fa-edit"></i>Modifier
                       </button>
                       <button class="btn btn-danger text">
                         <i class="fa-solid fa-trash"></i>Supprimer
@@ -126,4 +126,5 @@
     </div>
   </div>
 </section>
+
 {% endblock %}
