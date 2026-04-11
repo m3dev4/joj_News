@@ -105,10 +105,11 @@
                     </p>
                     {% if commentaire.auteur == request.user %}
                     <div class="d-flex gap-2">
-                      <div class="d-flex gap-2 align-items-center">
+                      <div class="">
                         <form
                           action="{% url 'updateCommentaire' commentaire.id %}"
                           method="post"
+                          class="d-flex flex-row"
                         >
                           {% csrf_token %}
                           <input
@@ -122,12 +123,15 @@
                           </button>
                         </form>
                       </div>
-                      <form action="{% url 'supprimerCommentaire' commentaire.id  %}">
+                      <div>
+
+                        <form action="{% url 'supprimerCommentaire' commentaire.id  %}">
                         {% csrf_token %}
-                        <button class="btn btn-danger text" type="submit">
+                        <button class="btn btn-danger d-flex" type="submit">
                           <i class="fa-solid fa-trash"></i>Supprimer
                         </button>
                       </form>
+                      </div>
                     </div>
                     {% endif %}
                   </div>
