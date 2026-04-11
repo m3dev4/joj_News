@@ -8,6 +8,7 @@ urlpatterns = [
     path("articles/<int:id>/", views.detail_article, name="detailArticle"),
     path("articles/<int:pk>/ajouter-commentaire/", views.ajout_commentaire, name="ajout-commentaire"),
     path("articles/<int:pk>/commenter/", views.UpdateCommentaire.as_view(), name="updateCommentaire"),
+    path("articles/<int:pk>", views.supprimer_commentaire, name="supprimerCommentaire"),
     
 ]
 

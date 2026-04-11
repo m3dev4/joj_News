@@ -105,12 +105,33 @@
                     </p>
                     {% if commentaire.auteur == request.user %}
                     <div class="d-flex gap-2">
-                      <button class="btn btn-primary text">
-                        <i class="fa-solid fa-edit"></i>Modifier
-                      </button>
-                      <button class="btn btn-danger text">
-                        <i class="fa-solid fa-trash"></i>Supprimer
-                      </button>
+                      <div class="">
+                        <form
+                          action="{% url 'updateCommentaire' commentaire.id %}"
+                          method="post"
+                          class="d-flex flex-row"
+                        >
+                          {% csrf_token %}
+                          <input
+                            type="text"
+                            name="contenu"
+                            value="{{commentaire.contenu}}"
+                            class="form-control"
+                          />
+                          <button class="btn btn-primary text" type="submit">
+                            <i class="fa-solid fa-edit"></i>Modifier
+                          </button>
+                        </form>
+                      </div>
+                      <div>
+
+                        <form action="{% url 'supprimerCommentaire' commentaire.id  %}">
+                        {% csrf_token %}
+                        <button class="btn btn-danger d-flex" type="submit">
+                          <i class="fa-solid fa-trash"></i>Supprimer
+                        </button>
+                      </form>
+                      </div>
                     </div>
                     {% endif %}
                   </div>
