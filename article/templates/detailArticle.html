@@ -1,5 +1,4 @@
-{% extends 'base.html' %} {% load static %} {%block
-title%}{{article.titre}}{%endblock%} {% block content %}
+{% extends 'base.html' %} {% load static %} {%block title%}{{article.titre}}{%endblock%} {% block content %}
 <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
 <section class="w-100 h-100">
   <div class="head">
@@ -123,9 +122,12 @@ title%}{{article.titre}}{%endblock%} {% block content %}
                           </button>
                         </form>
                       </div>
-                      <button class="btn btn-danger text">
-                        <i class="fa-solid fa-trash"></i>Supprimer
-                      </button>
+                      <form action="{% url 'supprimerCommentaire' commentaire.id  %}">
+                        {% csrf_token %}
+                        <button class="btn btn-danger text" type="submit">
+                          <i class="fa-solid fa-trash"></i>Supprimer
+                        </button>
+                      </form>
                     </div>
                     {% endif %}
                   </div>
