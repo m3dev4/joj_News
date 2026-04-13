@@ -7,8 +7,11 @@
   <div class="container py-5">
     <h2 class="section-title">Catégories</h2>
     <div class="d-flex gap-2 flex-wrap mb-5">
-      {% for categorie in categories %}
-      <span class="category-badge">{{ categorie.nom }}</span>
+      <a class="category-badge" href="{% url 'articles' %}">Tout les articles</a>
+      {% for cat in categories %}
+      <a class="category-badge" href="{% url 'categorie_article_by_categortie' cat.id %}">
+        {{ cat.nom }}
+      </a>
       {% endfor %}
     </div>
 
@@ -16,7 +19,8 @@
     <h2 class="section-title">Tous les articles</h2>
     <div class="row g-4">
       {% for article in articles %}
-      <div class="col-12 col-md-6 col-lg-4">
+        {% if article %}
+         <div class="col-12 col-md-6 col-lg-4">
         <div class="article-card h-100">
           <div class="article-card__img">
             {% if article.image %}
@@ -38,13 +42,15 @@
               <a
                 href="{% url 'detailArticle' article.id %}"
                 class="btn-lire"
-                onclick="my_modal_3.showModal()"
                 >Lire</a
               >
             </div>
           </div>
         </div>
       </div>
+      {% else %}
+      <p>Aucun article disponible</p>
+      {% endif %}
       {% endfor %}
     </div>
   </div>

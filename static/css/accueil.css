@@ -49,3 +49,34 @@
   font-weight: 400;
   color: #fff;
 }
+
+/* ─── Responsive Hero ─── */
+@media (max-width: 992px) {
+  .hero h1 { font-size: 5rem; }
+  .hero p  { font-size: 1.2rem; }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    background-position: center, center, center, center;
+  }
+  .hero h1 { font-size: 3.5rem; }
+  .hero p  { font-size: 1rem; }
+
+  .hero .container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero .d-flex {
+    align-items: center !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.5rem; }
+  .hero p  { font-size: 0.95rem; }
+}

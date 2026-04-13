@@ -42,7 +42,7 @@
           </div>
         </a>
 
-        <ul class="navbar-links">
+        <ul class="navbar-links" id="navbarLinks">
           <li><a href="{% url 'accueil' %}">Accueil</a></li>
           <li><a href="{% url 'articles' %}">Articles</a></li>
           <li><a href="#">Catégories</a></li>
@@ -65,8 +65,24 @@
           <a href="{% url 'register' %}" class="btn-inscription">Inscription</a>
           {% endif %}
         </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     </header>
     {%block content%} {%endblock%}
+    <script>
+      const toggle = document.getElementById('navbarToggle');
+      const links  = document.getElementById('navbarLinks');
+      toggle.addEventListener('click', () => {
+        links.classList.toggle('open');
+        toggle.classList.toggle('active');
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.classList.remove('active');
+      }));
+    </script>
   </body>
 </html>

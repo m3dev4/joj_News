@@ -9,6 +9,7 @@ urlpatterns = [
     path("articles/<int:pk>/ajouter-commentaire/", views.ajout_commentaire, name="ajout-commentaire"),
     path("articles/<int:pk>/commenter/", views.UpdateCommentaire.as_view(), name="updateCommentaire"),
     path("articles/<int:pk>", views.supprimer_commentaire, name="supprimerCommentaire"),
+    path("articles/categorie/<int:id>/", views.categorie_article_by_categortie, name="categorie_article_by_categortie")
     
 ]
 

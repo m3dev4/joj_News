@@ -137,4 +137,36 @@
   color: #ffd700;
 }
 
+/* ─── Responsive Articles ─── */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 20px;
+  }
 
+  .category-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  .article-card__title {
+    font-size: 16px;
+  }
+
+  .article-card__img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 17px;
+  }
+
+  .article-card__img {
+    height: 140px;
+  }
+
+  .article-card__body {
+    padding: 12px;
+  }
+}
