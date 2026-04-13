@@ -48,3 +48,58 @@
     font-size: 14px;
 }
 
+/* ─── Responsive Detail ─── */
+@media (max-width: 992px) {
+  .head { height: 40vh; }
+
+  .illust img {
+    max-width: 200px;
+    top: 30px;
+  }
+
+  .head .px-5 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+}
+
+@media (max-width: 768px) {
+  .head {
+    height: auto;
+    min-height: 180px;
+    padding-bottom: 24px;
+  }
+
+  /* Hide the illustration on mobile so title has full width */
+  .illust { display: none !important; }
+
+  .head .px-5 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .head h1 { font-size: 1.4rem !important; }
+
+  .content {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  .progress-content { display: none; }
+
+  /* Article image inside card */
+  .card img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 260px;
+    object-fit: cover;
+  }
+
+  /* Comment edit form stacks on mobile */
+  .d-flex.flex-row {
+    flex-direction: column !important;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .head h1 { font-size: 1.15rem !important; }
+  .content { font-size: 15px; }
+}
