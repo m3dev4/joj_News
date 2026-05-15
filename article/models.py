@@ -16,6 +16,7 @@ class Articles(models.Model):
     image = models.ImageField(upload_to="articles/", blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
     categorie = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    resume = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.titre

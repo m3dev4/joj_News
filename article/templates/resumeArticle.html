@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% load static %} {%block title%}{{article.titre}}{%endblock%} 
+
+
+{% block content %}
+<div>
+    <div>
+        <h1>Résumé de l'article</h1>
+        <h2>{{ article.titre }}</h2>
+        {% if error_message %}
+            <p class="text-danger">{{ error_message }}</p>
+        {% else %}
+            <p>{{ resume }}</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

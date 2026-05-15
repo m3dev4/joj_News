@@ -23,6 +23,8 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -73,16 +75,18 @@
     </header>
     {%block content%} {%endblock%}
     <script>
-      const toggle = document.getElementById('navbarToggle');
-      const links  = document.getElementById('navbarLinks');
-      toggle.addEventListener('click', () => {
-        links.classList.toggle('open');
-        toggle.classList.toggle('active');
+      const toggle = document.getElementById("navbarToggle");
+      const links = document.getElementById("navbarLinks");
+      toggle.addEventListener("click", () => {
+        links.classList.toggle("open");
+        toggle.classList.toggle("active");
       });
-      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.classList.remove('active');
-      }));
+      links.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          links.classList.remove("open");
+          toggle.classList.remove("active");
+        }),
+      );
     </script>
   </body>
 </html>
